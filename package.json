@@ -1,0 +1,17 @@
+{
+  "name": "node_kafka_consumer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@kafkajs/confluent-schema-registry": "^3.2.1",
+    "express": "^4.17.3",
+    "kafkajs": "^1.16.0"
+  }
+}
