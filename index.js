@@ -14,7 +14,7 @@ const kafka = new Kafka({
 // create a new consumer from the kafka client, and set its group ID
 // the group ID helps Kafka keep track of the messages that this client
 // is yet to receive
-const consumer = kafka.consumer({ groupId: "my-apps" });
+const consumer = kafka.consumer({ groupId: "my-apps14" });
 let messagesArray = [];
 
 const consume = async () => {
@@ -44,7 +44,7 @@ var app = express();
 
 app.get("/", function (req, res) {
   res.setHeader("Content-type", "text/html");
-  res.send(`<h3>${messagesArray}</h3><br/><br/>`);
+  res.send(`<h4>${messagesArray}</h4>`);
 });
 
 var server = app.listen(5000, function () {
