@@ -29,8 +29,7 @@ const consume = async () => {
   await consumer.run({
     eachMessage: async ({ topic, partition, message }) => {
       // Push messages to messagesArray after decoded
-      // In a JSON format to be able to display in the browser
-      messagesArray.push(JSON.stringify(await registry.decode(message.value)));
+      messagesArray.push(await registry.decode(message.value));
 
       // Log details on our console (optional)
       // Notice there is no need to convert to JSON here
@@ -54,7 +53,14 @@ var app = express();
 // Create the "/" route response
 app.get("/", function (req, res) {
   res.setHeader("Content-type", "text/html");
-  res.send(`<h4>${messagesArray}</h4>`);
+  // In a JSON format to be able to display in the browser
+  res.send(
+    messagesArray
+      .map((message) => {
+        return `<h4>${JSON.stringify(message)}</h4>`;
+      })
+      .join(" ")
+  );
 });
 
 // Listen on port 5000
