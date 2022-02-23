@@ -1,6 +1,6 @@
 const { Kafka } = require("kafkajs");
 const { SchemaRegistry } = require("@kafkajs/confluent-schema-registry");
-
+const express = require("express");
 const registry = new SchemaRegistry({ host: "http://localhost:8081" });
 
 // Create the client with the broker list
@@ -46,8 +46,6 @@ const consume = async () => {
 // Run our consumer
 consume();
 
-// Import Express
-var express = require("express");
 var app = express();
 
 // Create the "/" route response
