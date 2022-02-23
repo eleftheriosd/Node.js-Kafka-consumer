@@ -28,10 +28,12 @@ const consume = async () => {
   // Run our consumer
   await consumer.run({
     eachMessage: async ({ topic, partition, message }) => {
-      // Push messages to messagesArray
-      messagesArray.push(message.value.toString());
+      // Push messages to messagesArray after decoded
+      // In a JSON format to be able to display in the browser
+      messagesArray.push(JSON.stringify(await registry.decode(message.value)));
 
       // Log details on our console (optional)
+      // Notice there is no need to convert to JSON here
       console.log({
         topic,
         key: message.key.toString(),
